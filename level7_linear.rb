@@ -3,7 +3,6 @@ def play_turn(warrior)
 @max_health = 20
 @current_health = warrior.health
 @danger_health = 9
-
  if warrior.feel.wall?
   warrior.pivot!
  elsif warrior.feel.empty? and warrior.health == @max_health 
