@@ -30,18 +30,7 @@ class Player
       warrior.walk!
     end
   end
-  def movement(warrior)
-    if get_captives(warrior)
-      rescues(warrior)
-    elsif get_enemies(warrior)
-      attacks(warrior)
-    elsif warrior.feel.wall?
-      warrior.pivot!
-    else
-      warrior.walk!
-    end
-  end
-  
+
  def attacks(warrior)
     if warrior.feel(:backward).enemy?
       warrior.pivot!
@@ -53,6 +42,19 @@ class Player
       warrior.shoot!
     end
   end  
+
+  def movement(warrior)
+    if get_captives(warrior)
+      rescues(warrior)
+    elsif get_enemies(warrior)
+      attacks(warrior)
+    elsif warrior.feel.wall?
+      warrior.pivot!
+    else
+      warrior.walk!
+    end
+  end
+
 
 def diminishing_health(warrior)
     warrior.health < @last_health
